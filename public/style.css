@@ -1,0 +1,52 @@
+body {
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF9C9;
+    flex-direction: column;
+    gap: 20px;
+    }
+
+#weaving-space{
+  width: 600px;
+  height: 500px;
+  border: 1px solid #555;
+  position: relative;
+}
+
+.warp{
+  position: absolute;
+  z-index: 2;
+  top: 40px;
+  height: 420px;
+  width: 16px;
+  /* background-color: cadetblue; */
+  background-color:#9db8d5;
+}
+
+.weft{
+  position: absolute;
+  /* top:150px; */
+  /* left:70px; */
+  display: flex;
+}
+
+.segment{
+  width: 32px;
+  height:16px;
+  /* background-color: darkblue; */
+  background-color:#78020c
+}
+
+.under{
+  z-index: 1;
+}
+
+.over{
+  z-index: 3;
+}
+
+

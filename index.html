@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=.7"/>
+    <meta name="description" content="frequency links (2023). a multi-player synthesizer" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="frequency links (2023)" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url"/>
+    <meta property="og:description" content="frequency links by Tommy (2023)" />
+    <meta
+      property="og:image"
+      content="https://frequency-links.vercel.app/holdinghands.png"
+    />
+    <meta name="twitter:card" content="summary" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.sound@latest/dist/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Digital-Weaving</title>
+  </head>
+  <body> 
+    <div id="weaving-space"></div>  
+    <div id="control">
+      <p>Enter 0s and 1s to weave pattern!</p>
+      <input type="text" id="pattern-input" placeholder="e.g. 010101010101010" maxlength="15">
+      <button id="weave-button">Weave</button>
+      <p>0 = under  1 = over</p>
+    </div> 
+    <script src="sketch.js"></script>
+  </body>
+</html>
