@@ -44,6 +44,35 @@ function createWeft(pattern, row){
     return weft;
 }
 
+const galleryItems = document.getElementById("gallery-items");
+
+function exportPiece(){
+    if (previewWeft){
+        previewWeft.remove();
+        previewWeft = null;
+    } 
+    htmlToImage.toPng(weavingSpace).then(function(dataUrl) {
+        socket.emit("savePiece", dataUrl);
+        clearWeaving();
+    });
+}
+
+function addGalleryImage(dataUrl) {
+    const img = document.createElement("img");
+    img.src = dataUrl;
+    img.classList.add("gallery-image");
+    galleryItems.appendChild(img);
+}
+
+function clearWeaving(){
+    weavingSpace.querySelectorAll(".weft").forEach(function(weft) {
+        weft.remove();
+    });
+
+    previewWeft = null;
+    currentRow = 0;
+}
+
 patternInput.addEventListener("input", function(){
     let pattern = patternInput.value;
     if (previewWeft){
@@ -89,6 +118,24 @@ socket.on("weavingHistory", function(history){
     currentRow = history.length;
 });
  
+socket.on("pieceCompleted", function(uploaderId){
+    if (previewWeft) {
+        previewWeft.remove();
+        previewWeft = null;
+    }
+    if (socket.id === uploaderId) {
+        exportPiece();
+    } else {
+        clearWeaving();
+    }
+});
 
+socket.on("newGalleryImage", function(dataUrl) {
+    addGalleryImage(dataUrl);
+});
 
-
+socket.on("galleryHistory", function(images) {
+    images.forEach(function(dataUrl) {
+        addGalleryImage(dataUrl);
+    });
+});

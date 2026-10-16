@@ -18,16 +18,31 @@
     <script src="https://cdn.jsdelivr.net/npm/p5.sound@latest/dist/p5.sound.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
-    <title>Digital-Weaving</title>
+    <title>Binary-Weaving</title>
   </head>
   <body> 
-    <div id="weaving-space"></div>  
-    <div id="control">
-      <p>Enter 0s and 1s to weave pattern!</p>
-      <input type="text" id="pattern-input" placeholder="e.g. 010101010101010" maxlength="15">
-      <button id="weave-button">Weave</button>
-      <p>0 = under  1 = over</p>
-    </div> 
+    <div id="canva">
+      <div id="main">
+        <h3>Binary Weaving</h3>
+        <div id="weaving-space"></div>  
+        <div id="control">
+          <p>Enter 15 digits of 0s and 1s to create your thread.</p>
+          <input type="text" id="pattern-input" placeholder="e.g. 010101010101010" maxlength="15">
+          <button id="weave-button">Weave</button>
+          <p>0 = under (the thread goes under the vertical line)</p>
+          <p>1 = over (the thread goes over the vertical line)</p>
+          <p>Click WEAVE to add your thread to the piece!</p>
+          <p>When enough threads are added, the finished piece will appear in the gallery, and a new weaving will begin.</p>
+        </div> 
+      </div>
+
+      <div id="gallery">
+        <h3> Gallery </h3>
+        <div id = "gallery-items"></div>
+      </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.js"></script>
     <script src="sketch.js"></script>
   </body>
 </html>
